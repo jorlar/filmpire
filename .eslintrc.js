@@ -16,6 +16,8 @@ module.exports = {
     },
   ],
   parserOptions: {
+    // put this to 12 if linter gives error
+    // ecmaVersion: 12,
     ecmaVersion: "latest",
     sourceType: "module",
   },
