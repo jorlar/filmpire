@@ -11,9 +11,10 @@ import {
 import {
   Menu,
   AccountCircle,
-  Brightneess4,
-  Brightneess7,
+  Brightness4,
+  Brightness7,
 } from "@mui/icons-material";
+import { useTheme } from "@mui/material/styles";
 import { Link } from "react-router-dom";
 
 import useStyles from "./styles";
@@ -21,6 +22,7 @@ import useStyles from "./styles";
 const NavBar = () => {
   const classes = useStyles();
   const isMobile = useMediaQuery("(max-width:600px)");
+  const theme = useTheme();
   return (
     <>
       <AppBar position='fixed'>
@@ -35,6 +37,31 @@ const NavBar = () => {
               <Menu />
             </IconButton>
           )}
+          <IconButton Color='inherit' sx={{ ml: 1 }} onClick={() => {}}>
+            {theme.palette.mode === "dark" ? <Brightness7 /> : <Brightness4 />}
+          </IconButton>
+          {!isMobile && "Search..."}
+          <div>
+            {!isAuthenticated ? (
+              <Button color='inherit' onClick={() => {}}>
+                Login &nbsp; <AccountCircle />
+              </Button>
+            ) : (
+              <Button
+                color='inherit'
+                component={Link}
+                to={`/profile/:id`}
+                className={classes.linkButton}
+                onClick={() => {}}>
+                {!isMobile && <>My Movies &nbsp;</>}
+                <Avatar
+                  style={{ widht: 30, height: 30 }}
+                  //Src={}
+                />
+              </Button>
+            )}
+          </div>
+          {isMobile && "Search..."}
         </Toolbar>
       </AppBar>
     </>
