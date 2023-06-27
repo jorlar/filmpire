@@ -14,18 +14,12 @@ import { useTheme } from "@mui/styles";
 import { useGetGeneresQuery } from "../../services/TMDB";
 
 import useStyles from "./styles";
+import genreIcons from "../../assets/genres";
 
 const categories = [
   { label: "Popular", value: "popular" },
   { label: "Top Rated", value: "top_rated" },
   { label: "Upcomming", value: "upcomming" },
-];
-
-const demoCategories = [
-  { label: "Comedy", value: "comedy" },
-  { label: "Action", value: "action" },
-  { label: "Horror", value: "horror" },
-  { label: "Anime", value: "anime" },
 ];
 
 const redLogo =
@@ -56,7 +50,7 @@ const Sidebar = ({ setMobileOpen }) => {
               <ListItem onClick={() => {}} button>
                 <ListItemIcon>
                   <img
-                    src={redLogo}
+                    src={genreIcons[label.toLowerCase()]}
                     className={classes.genreImages}
                     height={30}
                   />
@@ -79,7 +73,7 @@ const Sidebar = ({ setMobileOpen }) => {
                 <ListItem onClick={() => {}} button>
                   <ListItemIcon>
                     <img
-                      src={redLogo}
+                      src={genreIcons[name.toLowerCase()]}
                       className={classes.genreImages}
                       height={30}
                     />
